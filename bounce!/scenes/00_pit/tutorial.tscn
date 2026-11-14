@@ -507,28 +507,6 @@ empty_selection_clipboard_enabled = false
 tab_input_mode = false
 virtual_keyboard_enabled = false
 
-[node name="TextEdit2" type="TextEdit" parent="." unique_id=320031822]
-offset_left = 8.0
-offset_top = -81.0
-offset_right = 141.0
-offset_bottom = -14.0
-theme_override_styles/normal = SubResource("StyleBoxEmpty_uxdra")
-theme_override_styles/focus = SubResource("StyleBoxEmpty_bic0w")
-theme_override_styles/read_only = SubResource("StyleBoxEmpty_xwvya")
-text = "D to move right
-A to move left"
-editable = false
-context_menu_enabled = false
-emoji_menu_enabled = false
-shortcut_keys_enabled = false
-selecting_enabled = false
-deselect_on_focus_loss_enabled = false
-drag_and_drop_selection_enabled = false
-middle_mouse_paste_enabled = false
-empty_selection_clipboard_enabled = false
-tab_input_mode = false
-virtual_keyboard_enabled = false
-
 [node name="TextEdit3" type="TextEdit" parent="." unique_id=1446807206]
 offset_left = 762.0
 offset_top = -328.0
@@ -557,9 +535,9 @@ virtual_keyboard_enabled = false
 position = Vector2(1171, -16)
 shape = SubResource("RectangleShape2D_g4v7s")
 
-[node name="parkour_scene" type="Area2D" parent="." unique_id=1473906199]
+[node name="tp_parkour" type="Area2D" parent="." unique_id=1473906199]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="parkour_scene" unique_id=886723025]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="tp_parkour" unique_id=886723025]
 position = Vector2(1171.5, -75)
 shape = SubResource("RectangleShape2D_yf5fn")
 
