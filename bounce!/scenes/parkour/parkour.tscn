@@ -2,6 +2,7 @@
 
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_jbll3"]
 [ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="2_bfiwq"]
+[ext_resource type="PackedScene" uid="uid://dwrfkkx08tpfa" path="res://scenes/platforms/trapped_bridge.tscn" id="3_vswcf"]
 [ext_resource type="PackedScene" uid="uid://cqkgpl7hdem3p" path="res://scenes/platforms/t_platform.tscn" id="4_16dot"]
 [ext_resource type="PackedScene" uid="uid://dou3uyrpifuhj" path="res://scenes/platforms/moving_platform_wood.tscn" id="5_wuwrb"]
 
@@ -516,3 +517,6 @@ position = Vector2(861, -109)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moving platform wood2" unique_id=132049384]
 libraries/ = SubResource("AnimationLibrary_wuwrb")
 autoplay = &"spin_boi"
+
+[node name="trapped_bridge" parent="." unique_id=89954691 instance=ExtResource("3_vswcf")]
+position = Vector2(150, 2)
