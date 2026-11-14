@@ -9,40 +9,64 @@ size = Vector2(62, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(46, 19)
 
-[sub_resource type="Animation" id="Animation_xgq7l"]
+[sub_resource type="Animation" id="Animation_6bbn1"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
+"values": [Vector2(0, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_6r51h"]
+[sub_resource type="Animation" id="Animation_xgq7l"]
 resource_name = "falling_bridge"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
+tracks/0/path = NodePath("CollisionShape2D:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(0, 578)]
+"values": [Vector2(0, 1), Vector2(0.5, 805)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, 804)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_yg3e4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6r51h"]
 _data = {
-&"RESET": SubResource("Animation_xgq7l"),
-&"falling_bridge": SubResource("Animation_6r51h")
+&"RESET": SubResource("Animation_6bbn1"),
+&"falling_bridge": SubResource("Animation_xgq7l")
 }
 
 [node name="trapped_bridge" type="AnimatableBody2D" unique_id=89954691]
@@ -64,7 +88,7 @@ one_way_collision = true
 position = Vector2(-1, -11.5)
 shape = SubResource("RectangleShape2D_yf5fn")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=48853108]
-libraries/ = SubResource("AnimationLibrary_yg3e4")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1724684079]
+libraries/ = SubResource("AnimationLibrary_6r51h")
 
 [connection signal="body_entered" from="Sense" to="." method="_on_sense_body_entered"]

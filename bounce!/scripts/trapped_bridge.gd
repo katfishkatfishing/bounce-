@@ -12,8 +12,8 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
-
-
-func _on_sense_body_entered(body: Node2D) -> void:
-	animation_player.play("falling_bridge")
-	hide()
+	
+func _on_sense_body_entered(body: CharacterBody2D) -> void:
+	print("Detected a body named: ", body.name)
+	if body.name == "player":
+		animation_player.play("falling_bridge")

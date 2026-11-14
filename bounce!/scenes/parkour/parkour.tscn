@@ -2,7 +2,6 @@
 
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_jbll3"]
 [ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="2_bfiwq"]
-[ext_resource type="PackedScene" uid="uid://dwrfkkx08tpfa" path="res://scenes/platforms/trapped_bridge.tscn" id="3_vswcf"]
 [ext_resource type="PackedScene" uid="uid://cqkgpl7hdem3p" path="res://scenes/platforms/t_platform.tscn" id="4_16dot"]
 [ext_resource type="PackedScene" uid="uid://dou3uyrpifuhj" path="res://scenes/platforms/moving_platform_wood.tscn" id="5_wuwrb"]
 
@@ -402,20 +401,6 @@ sources/0 = SubResource("TileSetAtlasSource_bfiwq")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 
-[sub_resource type="GDScript" id="GDScript_16dot"]
-script/source = "extends AnimatableBody2D
-
-
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
-"
-
 [sub_resource type="Animation" id="Animation_gokvu"]
 length = 0.001
 tracks/0/type = "value"
@@ -454,6 +439,44 @@ _data = {
 &"moving_platform": SubResource("Animation_wtr4d")
 }
 
+[sub_resource type="Animation" id="Animation_ldneh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_16dot"]
+resource_name = "spin_boi"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2, 3, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 1.5707964, 3.1415927, 4.712389, 6.2831855]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_wuwrb"]
+_data = {
+&"RESET": SubResource("Animation_ldneh"),
+&"spin_boi": SubResource("Animation_16dot")
+}
+
 [node name="parkour" type="Node2D" unique_id=557296427]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=576017546]
@@ -471,9 +494,6 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 [node name="Player" parent="." unique_id=1989927636 instance=ExtResource("2_bfiwq")]
 position = Vector2(-238, -11)
 
-[node name="trapped_bridge" parent="." unique_id=89954691 instance=ExtResource("3_vswcf")]
-script = SubResource("GDScript_16dot")
-
 [node name="t-platform" parent="." unique_id=396680342 instance=ExtResource("4_16dot")]
 position = Vector2(991, -9)
 
@@ -489,3 +509,10 @@ position = Vector2(574, -165)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moving platform wood" unique_id=1480340658]
 libraries/ = SubResource("AnimationLibrary_fd05m")
 autoplay = &"moving_platform"
+
+[node name="moving platform wood2" parent="." unique_id=32161393 instance=ExtResource("5_wuwrb")]
+position = Vector2(861, -109)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="moving platform wood2" unique_id=132049384]
+libraries/ = SubResource("AnimationLibrary_wuwrb")
+autoplay = &"spin_boi"
