@@ -1,7 +1,9 @@
 extends CharacterBody2D
 
+@onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
-const SPEED = 300.0
+const SPEED = 100.0
 const JUMP_VELOCITY = -400.0
 
 
@@ -12,14 +14,41 @@ func _physics_process(delta: float) -> void:
 
 	# Handle jump.
 	if Input.is_action_just_pressed("up") and is_on_floor():
+		animated_sprite_2d.play("jump")
 		velocity.y = JUMP_VELOCITY
 
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("left", "right")
+	
+	if direction > 0:
+		animated_sprite_2d.flip_h = false
+	elif direction < 0:
+		animated_sprite_2d.flip_h = true
+		
+	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	update_animation(direction)
+	
+func update_animation(direction: float) -> void:
+	#if is_on_floor():
+		#if direction == 0 or direction > 0 or direction:
+			#animated_sprite_2d.play("idle")
+		#else:
+			#animated_sprite_2d.play("jump")
+		#
+	#if not is_on_floor():
+		#animated_sprite_2d.play("fall")
+		#print("falling")
+	if is_on_floor():
+		animated_sprite_2d.play("idle")
+	else:
+		if animated_sprite_2d.animation == &"jump" and animated_sprite_2d.is_playing():
+			return
+		animated_sprite_2d.play("fall")

@@ -11,7 +11,7 @@ size = Vector2(20, 20)
 
 [node name="floor" type="Sprite2D" parent="." unique_id=1360081105]
 position = Vector2(293.81598, 215)
-scale = Vector2(0.5, 1.5)
+scale = Vector2(1.577004, 9.262908)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor" unique_id=838493991]
@@ -21,7 +21,7 @@ shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="floor2" type="Sprite2D" parent="." unique_id=1676612088]
 position = Vector2(349.81598, 214)
-scale = Vector2(0.5, 1.5)
+scale = Vector2(1.577004, 9.262893)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor2" unique_id=1208844521]
@@ -32,7 +32,7 @@ shape = SubResource("RectangleShape2D_57qmd")
 [node name="floor3" type="Sprite2D" parent="." unique_id=397921690]
 position = Vector2(323.81595, 233.99997)
 rotation = 1.5643431
-scale = Vector2(0.38139108, 4.17922)
+scale = Vector2(1.2029104, 25.80778)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
 
 [node name="StaticBody2D" type="StaticBody2D" parent="floor3" unique_id=970203904]
