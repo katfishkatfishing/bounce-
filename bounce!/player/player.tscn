@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dsbsf728dihrk" path="res://assets/sprites/hks.png" id="2_g1dw6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_7numd"]
-radius = 8.0
+radius = 9.0
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
 atlas = ExtResource("2_g1dw6")
@@ -36,4 +36,4 @@ shape = SubResource("CircleShape2D_7numd")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1208525970]
 sprite_frames = SubResource("SpriteFrames_d0u6y")
-frame_progress = 0.87522024
+frame_progress = 0.017601568

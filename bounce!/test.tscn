@@ -10,7 +10,7 @@ size = Vector2(20, 20)
 [node name="test" type="Node2D" unique_id=808088760]
 
 [node name="floor" type="Sprite2D" parent="." unique_id=1360081105]
-position = Vector2(6, 16)
+position = Vector2(293.81598, 215)
 scale = Vector2(0.5, 1.5)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
 
@@ -20,7 +20,7 @@ texture = SubResource("PlaceholderTexture2D_yf5fn")
 shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="floor2" type="Sprite2D" parent="." unique_id=1676612088]
-position = Vector2(62, 15)
+position = Vector2(349.81598, 214)
 scale = Vector2(0.5, 1.5)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
 
@@ -30,7 +30,7 @@ texture = SubResource("PlaceholderTexture2D_yf5fn")
 shape = SubResource("RectangleShape2D_57qmd")
 
 [node name="floor3" type="Sprite2D" parent="." unique_id=397921690]
-position = Vector2(36.000004, 34.999996)
+position = Vector2(323.81595, 233.99997)
 rotation = 1.5643431
 scale = Vector2(0.38139108, 4.17922)
 texture = SubResource("PlaceholderTexture2D_yf5fn")
