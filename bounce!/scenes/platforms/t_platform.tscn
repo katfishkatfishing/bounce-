@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cqkgpl7hdem3p"]
+
+[ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_qekwd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(30, 2)
+
+[node name="t-platform" type="StaticBody2D" unique_id=396680342]
+z_index = -1
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=639573000]
+texture = ExtResource("1_qekwd")
+region_enabled = true
+region_rect = Rect2(289, 143, 31, 17)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1218784066]
+position = Vector2(0, -6)
+shape = SubResource("RectangleShape2D_g4v7s")
+one_way_collision = true
