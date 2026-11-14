@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://dwrfkkx08tpfa"]
+
+[ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_0fvhx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(62, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(46, 19)
+
+[node name="trapped_bridge" type="AnimatableBody2D" unique_id=89954691]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=965649939]
+texture = ExtResource("1_0fvhx")
+region_enabled = true
+region_rect = Rect2(321, 192, 63, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=813238097]
+position = Vector2(0, 1)
+shape = SubResource("RectangleShape2D_g4v7s")
+one_way_collision = true
+
+[node name="Sense" type="Area2D" parent="." unique_id=1777957676]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Sense" unique_id=1690104221]
+position = Vector2(-1, -11.5)
+shape = SubResource("RectangleShape2D_yf5fn")
