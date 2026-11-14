@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dou3uyrpifuhj"]
+
+[ext_resource type="Texture2D" uid="uid://ct0m74p5cp7qr" path="res://assets/tilemap/forgotten_forest_example_tileset.png" id="1_l8qp0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(80, 16)
+
+[node name="moving platform wood" type="AnimatableBody2D" unique_id=518227041]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1070292209]
+texture = ExtResource("1_l8qp0")
+region_enabled = true
+region_rect = Rect2(537, 352, 80, 22)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2016993526]
+position = Vector2(0, 3)
+shape = SubResource("RectangleShape2D_g4v7s")
+one_way_collision = true
