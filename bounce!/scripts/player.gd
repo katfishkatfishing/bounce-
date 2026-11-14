@@ -16,7 +16,9 @@ const slow_fall: bool = false
 
 #region
 var gpe_buildup : float = 0.0
+var rebound_primed: bool = false
 var is_bouncing_back: bool = false
+var is_rebound_jump: bool = false
 var coyote_timer: float = 0.0
 var coyote_time: float = 0.2
 var landing_timer: float = 0.0 #to count how long it takes to land
@@ -37,33 +39,27 @@ func _physics_process(delta: float) -> void:
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 		coyote_timer -= delta
+		
 		if velocity.y > peak_fall_speed:
 			peak_fall_speed = velocity.y
+			
+		# hold jump after falling 
+		if Input.is_action_just_pressed("up"):
+			rebound_primed = true
 		
-		if velocity.y > 0.0 and Input.is_action_pressed("up"):
+		if Input.is_action_just_released("up"):
+			rebound_primed = false
+			if velocity.y < 0.0 and not is_rebound_jump:
+				velocity.y *= 0.5
+		
+		if rebound_primed and velocity.y > 0.0 and Input.is_action_pressed("up"):
 			energy_bar.visible = true
 			energy_bar.value = minf(peak_fall_speed * 0.5, max_buildup)
 		else:
 			energy_bar.visible = false
 	else:
 		coyote_timer = coyote_time
-
-	var just_landed = is_on_floor() and not was_on_floor_last_frame
-	
-	if just_landed:
-		if Input.is_action_pressed("up") and peak_fall_speed > 0.0:
-			gpe_buildup = minf(peak_fall_speed * 0.5, max_buildup)
-			is_bouncing_back = true
-			landing_timer = coyote_time
-			peak_fall_speed = 0.0
-			energy_bar.visible = true
-			energy_bar.value = gpe_buildup
-		else:
-			if peak_fall_speed > fall_velocity_limit:
-				take_fall_damage(peak_fall_speed)
-				print(hp)
-			peak_fall_speed = 0.0
-			energy_bar.visible = false
+		is_rebound_jump = false
 	
 	# Handle jump.
 	if is_bouncing_back:
@@ -71,6 +67,7 @@ func _physics_process(delta: float) -> void:
 		if Input.is_action_just_released("up"):
 			animated_sprite_2d.play("jump")
 			velocity.y = JUMP_VELOCITY - gpe_buildup
+			is_rebound_jump = true
 			reset_bounce_energy()
 		elif landing_timer <= 0.0:
 			reset_bounce_energy()
@@ -88,13 +85,29 @@ func _physics_process(delta: float) -> void:
 	elif direction < 0:
 		animated_sprite_2d.flip_h = true
 		
-	
 	if direction:
 		velocity.x = direction * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+	
+	var just_landed = is_on_floor() and not was_on_floor_last_frame
+	
+	if just_landed:
+		if rebound_primed and Input.is_action_pressed("up") and peak_fall_speed > 0.0:
+			gpe_buildup = minf(peak_fall_speed * 0.5, max_buildup)
+			is_bouncing_back = true
+			landing_timer = coyote_time
+			peak_fall_speed = 0.0
+			energy_bar.visible = true
+			energy_bar.value = gpe_buildup
+		else:
+			if peak_fall_speed > fall_velocity_limit:
+				take_fall_damage(peak_fall_speed)
+				print(hp)
+			peak_fall_speed = 0.0
+			reset_bounce_energy()
 	
 	update_animation(direction)
 	
@@ -125,6 +138,7 @@ func take_fall_damage(speed: float) -> void:
 
 func reset_bounce_energy() -> void:
 	gpe_buildup = 0.0
+	rebound_primed = false
 	is_bouncing_back = false
 	landing_timer = 0.0
 	energy_bar.value = 0.0
