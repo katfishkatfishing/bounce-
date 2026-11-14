@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://cjnbi7ekfkvnr"]
+
+[ext_resource type="Script" uid="uid://dmyiugvkfls2e" path="res://scripts/player.gd" id="1_rkbax"]
+[ext_resource type="Texture2D" uid="uid://dsbsf728dihrk" path="res://assets/sprites/hks.png" id="2_g1dw6"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_7numd"]
+radius = 8.0
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yw30f"]
+atlas = ExtResource("2_g1dw6")
+region = Rect2(0, 0, 24, 24)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_qjkh3"]
+atlas = ExtResource("2_g1dw6")
+region = Rect2(24, 0, 24, 24)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_d0u6y"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_yw30f")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_qjkh3")
+}],
+"loop": 1,
+"name": &"default",
+"speed": 2.0
+}]
+
+[node name="Player" type="CharacterBody2D" unique_id=1989927636]
+script = ExtResource("1_rkbax")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66918889]
+shape = SubResource("CircleShape2D_7numd")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1208525970]
+sprite_frames = SubResource("SpriteFrames_d0u6y")
+frame_progress = 0.87522024
