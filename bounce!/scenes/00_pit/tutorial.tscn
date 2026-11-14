@@ -471,7 +471,10 @@ tile_set = SubResource("TileSet_g4v7s")
 position = Vector2(620, -68)
 
 [node name="moving platform wood2" parent="." unique_id=47331050 instance=ExtResource("2_n416f")]
-position = Vector2(536, -162)
+position = Vector2(536, -153)
+
+[node name="moving platform wood3" parent="." unique_id=1504871594 instance=ExtResource("2_n416f")]
+position = Vector2(616, -214)
 
 [node name="Player" parent="." unique_id=1989927636 instance=ExtResource("3_e35f4")]
 position = Vector2(67, -414)
