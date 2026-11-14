@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dwrfkkx08tpfa"]
 
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_0fvhx"]
+[ext_resource type="Script" uid="uid://bgamqyubuemdn" path="res://scripts/trapped_bridge.gd" id="1_6bbn1"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(62, 2)
@@ -8,7 +9,44 @@ size = Vector2(62, 2)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
 size = Vector2(46, 19)
 
+[sub_resource type="Animation" id="Animation_xgq7l"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6r51h"]
+resource_name = "falling_bridge"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 578)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yg3e4"]
+_data = {
+&"RESET": SubResource("Animation_xgq7l"),
+&"falling_bridge": SubResource("Animation_6r51h")
+}
+
 [node name="trapped_bridge" type="AnimatableBody2D" unique_id=89954691]
+script = ExtResource("1_6bbn1")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=965649939]
 texture = ExtResource("1_0fvhx")
@@ -25,3 +63,8 @@ one_way_collision = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sense" unique_id=1690104221]
 position = Vector2(-1, -11.5)
 shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=48853108]
+libraries/ = SubResource("AnimationLibrary_yg3e4")
+
+[connection signal="body_entered" from="Sense" to="." method="_on_sense_body_entered"]

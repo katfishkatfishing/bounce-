@@ -402,6 +402,20 @@ sources/0 = SubResource("TileSetAtlasSource_bfiwq")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g4v7s"]
 
+[sub_resource type="GDScript" id="GDScript_16dot"]
+script/source = "extends AnimatableBody2D
+
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	pass # Replace with function body.
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+"
+
 [sub_resource type="Animation" id="Animation_gokvu"]
 length = 0.001
 tracks/0/type = "value"
@@ -458,7 +472,7 @@ shape = SubResource("WorldBoundaryShape2D_g4v7s")
 position = Vector2(-238, -11)
 
 [node name="trapped_bridge" parent="." unique_id=89954691 instance=ExtResource("3_vswcf")]
-position = Vector2(150, 2)
+script = SubResource("GDScript_16dot")
 
 [node name="t-platform" parent="." unique_id=396680342 instance=ExtResource("4_16dot")]
 position = Vector2(991, -9)
