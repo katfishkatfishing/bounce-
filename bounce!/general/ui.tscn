@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://0ld1bd5krxfr" path="res://assets/bar/mbarover.png" id="3_iqwdc"]
 [ext_resource type="Texture2D" uid="uid://bxor81hk8oe88" path="res://assets/bar/mbarprogress.png" id="4_3xl52"]
 
-[node name="UI" type="CanvasLayer" unique_id=1467675263]
+[node name="UI" type="CanvasLayer" unique_id=1467675263 groups=["UI"]]
 script = ExtResource("1_lm33j")
 
 [node name="GUI" type="Control" parent="." unique_id=69336040]
