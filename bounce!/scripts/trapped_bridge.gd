@@ -3,6 +3,7 @@ extends AnimatableBody2D
 @onready var collision_shape_2d: CollisionShape2D = $Sense/CollisionShape2D
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
 
+var has_triggered := false
 
 
 # Called when the node enters the scene tree for the first time.
