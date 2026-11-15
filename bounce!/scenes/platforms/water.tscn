@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://nphkuekqe5s0"]
 
 [ext_resource type="Texture2D" uid="uid://bmg0ch133die0" path="res://assets/tilemap/cavesofgallet_tiles.png" id="1_g4807"]
+[ext_resource type="Script" uid="uid://bh3xaiwyeup8n" path="res://scenes/platforms/water_enter.gd" id="2_il1fj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
 size = Vector2(16, 15)
@@ -18,6 +19,8 @@ region_enabled = true
 region_rect = Rect2(25, 81, 6, 6)
 
 [node name="water_enter" type="Area2D" parent="." unique_id=1729750500]
+unique_name_in_owner = true
+script = ExtResource("2_il1fj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="water_enter" unique_id=1833277557]
 position = Vector2(0, 0.5)
@@ -26,3 +29,6 @@ shape = SubResource("RectangleShape2D_g4v7s")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=673657763]
 shape = SubResource("RectangleShape2D_yf5fn")
 disabled = true
+
+[connection signal="body_entered" from="water_enter" to="water_enter" method="_on_body_entered"]
+[connection signal="body_exited" from="water_enter" to="water_enter" method="_on_body_exited"]

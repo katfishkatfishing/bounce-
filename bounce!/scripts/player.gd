@@ -24,11 +24,16 @@ var peak_fall_speed: float = 0.0
 var was_on_floor_last_frame: bool = true
 var hp: int = 100
 var SPEED = 100.0
-var JUMP_VELOCITY = -400.0
+var JUMP_VELOCITY = -400.
+var in_water: bool = false
 #endregion
 
 func _ready() -> void:
 	ForBars.update_health(hp)
+
+func _process(delta: float) -> void:
+	if hp <= 0:
+		die_respawn()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -126,11 +131,17 @@ func update_animation(direction: float) -> void:
 		animated_sprite_2d.play("fall")
 
 func take_fall_damage(speed: float) -> void:
+	if in_water == true:
+		return
+
 	var damage = (speed - fall_velocity_limit) * 0.1
 	hp -= int(damage)
 	ForBars.update_health(hp)
 
-#func die
+func die_respawn() -> void:
+	self.global_position = SpawnPoint.global_position
+	hp = max_hp
+	ForBars.update_health(hp)
 
 func reset_bounce_energy() -> void:
 	gpe_buildup = 0.0

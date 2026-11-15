@@ -3,7 +3,6 @@
 [ext_resource type="Script" uid="uid://e8fywnj0m0an" path="res://scripts/tutorial.gd" id="1_rjera"]
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_usprk"]
 [ext_resource type="PackedScene" uid="uid://dou3uyrpifuhj" path="res://scenes/platforms/moving_platform_wood.tscn" id="2_n416f"]
-[ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="3_e35f4"]
 [ext_resource type="PackedScene" uid="uid://nphkuekqe5s0" path="res://scenes/platforms/water.tscn" id="5_amvl5"]
 [ext_resource type="PackedScene" uid="uid://dmrmvhoswdspd" path="res://scenes/platforms/spawn_point.tscn" id="6_uxdra"]
 
@@ -485,9 +484,6 @@ position = Vector2(536, -153)
 
 [node name="moving platform wood3" parent="." unique_id=1504871594 instance=ExtResource("2_n416f")]
 position = Vector2(616, -214)
-
-[node name="Player" parent="." unique_id=1989927636 instance=ExtResource("3_e35f4")]
-position = Vector2(67, -414)
 
 [node name="TextEdit" type="TextEdit" parent="." unique_id=1376383998]
 offset_left = 344.0

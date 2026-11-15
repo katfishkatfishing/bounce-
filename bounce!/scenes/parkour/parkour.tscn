@@ -1,11 +1,12 @@
 [gd_scene format=4 uid="uid://bisr3vq5ooeoj"]
 
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_jbll3"]
-[ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="2_bfiwq"]
 [ext_resource type="PackedScene" uid="uid://dwrfkkx08tpfa" path="res://scenes/platforms/trapped_bridge.tscn" id="3_vswcf"]
 [ext_resource type="PackedScene" uid="uid://cqkgpl7hdem3p" path="res://scenes/platforms/t_platform.tscn" id="4_16dot"]
 [ext_resource type="PackedScene" uid="uid://bqoewswpy0xih" path="res://scenes/platforms/solid_platform.tscn" id="5_16dot"]
 [ext_resource type="PackedScene" uid="uid://dou3uyrpifuhj" path="res://scenes/platforms/moving_platform_wood.tscn" id="5_wuwrb"]
+[ext_resource type="PackedScene" uid="uid://dmrmvhoswdspd" path="res://scenes/platforms/spawn_point.tscn" id="6_wuwrb"]
+[ext_resource type="Script" uid="uid://4sfpa6qu321a" path="res://scripts/void.gd" id="7_gokvu"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_bfiwq"]
 texture = ExtResource("1_jbll3")
@@ -503,6 +504,8 @@ _data = {
 &"moving_plank": SubResource("Animation_fd05m")
 }
 
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_57qmd"]
+
 [node name="parkour" type="Node2D" unique_id=557296427]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=576017546]
@@ -516,9 +519,6 @@ tile_set = SubResource("TileSet_yf5fn")
 position = Vector2(-250, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
-
-[node name="Player" parent="." unique_id=1989927636 instance=ExtResource("2_bfiwq")]
-position = Vector2(-238, -11)
 
 [node name="t-platform" parent="." unique_id=396680342 instance=ExtResource("4_16dot")]
 position = Vector2(940, -9)
@@ -547,3 +547,14 @@ position = Vector2(567, -165)
 [node name="AnimationPlayer" type="AnimationPlayer" parent="moving platform wood" unique_id=1127121679]
 libraries/ = SubResource("AnimationLibrary_s5ivq")
 autoplay = &"moving_plank"
+
+[node name="SpawnPoint" parent="." unique_id=48932849 instance=ExtResource("6_wuwrb")]
+position = Vector2(-234, -45)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=751161904]
+position = Vector2(-245, 187)
+script = ExtResource("7_gokvu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=157603678]
+scale = Vector2(1.4135861, 1.2714171)
+shape = SubResource("WorldBoundaryShape2D_57qmd")
