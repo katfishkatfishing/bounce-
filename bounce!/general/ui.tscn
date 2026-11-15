@@ -1,0 +1,56 @@
+[gd_scene format=3 uid="uid://qkiac62ee2uw"]
+
+[ext_resource type="Script" uid="uid://37mjbrh8vw6d" path="res://general/ui.gd" id="1_lm33j"]
+[ext_resource type="Texture2D" uid="uid://c01wci7ps3j6d" path="res://assets/bar/underbar3.png" id="2_1c5kk"]
+[ext_resource type="Texture2D" uid="uid://0ld1bd5krxfr" path="res://assets/bar/mbarover.png" id="3_iqwdc"]
+[ext_resource type="Texture2D" uid="uid://bxor81hk8oe88" path="res://assets/bar/mbarprogress.png" id="4_3xl52"]
+
+[node name="UI" type="CanvasLayer" unique_id=1467675263]
+script = ExtResource("1_lm33j")
+
+[node name="GUI" type="Control" parent="." unique_id=69336040]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 1.0
+offset_right = 41.0
+offset_bottom = 40.0
+
+[node name="EnergyBar" type="ProgressBar" parent="GUI" unique_id=549130620]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 6
+anchor_left = 1.0
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_left = 1084.0
+offset_top = 216.0
+offset_right = 1088.0
+offset_bottom = 321.0
+grow_horizontal = 0
+grow_vertical = 2
+size_flags_horizontal = 8
+
+[node name="MarginContainer" type="MarginContainer" parent="GUI" unique_id=2072587767]
+layout_mode = 0
+offset_left = 8.0
+offset_top = 10.0
+offset_right = 48.0
+offset_bottom = 50.0
+
+[node name="NinePatchRect" type="NinePatchRect" parent="GUI/MarginContainer" unique_id=1865271502]
+layout_mode = 2
+patch_margin_left = 27
+patch_margin_top = 7
+axis_stretch_horizontal = 1
+
+[node name="HPBar" type="TextureProgressBar" parent="GUI/MarginContainer/NinePatchRect" unique_id=390600863]
+unique_name_in_owner = true
+layout_mode = 0
+offset_right = 200.0
+offset_bottom = 64.0
+scale = Vector2(1.2672466, 0.52191633)
+nine_patch_stretch = true
+texture_under = ExtResource("2_1c5kk")
+texture_over = ExtResource("3_iqwdc")
+texture_progress = ExtResource("4_3xl52")

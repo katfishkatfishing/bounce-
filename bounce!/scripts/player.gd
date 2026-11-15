@@ -1,9 +1,7 @@
 extends CharacterBody2D
 
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
-@onready var animation_player: AnimationPlayer = $AnimationPlayer
-@onready var energy_bar: ProgressBar = $Gui/CanvasLayer/EnergyBar
-
+@onready var ForBars = $UI
 
 #region
 const max_buildup: float = 300.0
@@ -30,9 +28,7 @@ var JUMP_VELOCITY = -400.0
 #endregion
 
 func _ready() -> void:
-	energy_bar.max_value = max_buildup
-	energy_bar.value = 0.0
-	energy_bar.visible = false
+	ForBars.update_health(hp)
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -53,10 +49,10 @@ func _physics_process(delta: float) -> void:
 				velocity.y *= 0.5
 		
 		if rebound_primed and velocity.y > 0.0 and Input.is_action_pressed("up"):
-			energy_bar.visible = true
-			energy_bar.value = minf(peak_fall_speed * 0.5, max_buildup)
+			ForBars.energy_bar.visible = true
+			ForBars.energy_bar.value = minf(peak_fall_speed * 0.5, max_buildup)
 		else:
-			energy_bar.visible = false
+			ForBars.energy_bar.visible = false
 	else:
 		coyote_timer = coyote_time
 		is_rebound_jump = false
@@ -100,12 +96,11 @@ func _physics_process(delta: float) -> void:
 			is_bouncing_back = true
 			landing_timer = coyote_time
 			peak_fall_speed = 0.0
-			energy_bar.visible = true
-			energy_bar.value = gpe_buildup
+			ForBars.energy_bar.visible = true
+			ForBars.energy_bar.value = gpe_buildup
 		else:
 			if peak_fall_speed > fall_velocity_limit:
 				take_fall_damage(peak_fall_speed)
-				print(hp)
 			peak_fall_speed = 0.0
 			reset_bounce_energy()
 	
@@ -133,6 +128,7 @@ func update_animation(direction: float) -> void:
 func take_fall_damage(speed: float) -> void:
 	var damage = (speed - fall_velocity_limit) * 0.1
 	hp -= int(damage)
+	ForBars.update_health(hp)
 
 #func die
 
@@ -141,5 +137,5 @@ func reset_bounce_energy() -> void:
 	rebound_primed = false
 	is_bouncing_back = false
 	landing_timer = 0.0
-	energy_bar.value = 0.0
-	energy_bar.visible = false
+	ForBars.energy_bar.value = 0.0
+	ForBars.energy_bar.visible = false
