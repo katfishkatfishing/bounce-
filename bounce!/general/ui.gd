@@ -10,6 +10,12 @@ const max_hp: int = 100
 var hp: int = 100
 
 func _ready() -> void:
+	if get_tree().current_scene.name == "MainMenu":
+		print("hide")
+		hide()
+	else:
+		show()
+		print("show")
 	energy_bar.max_value = max_buildup
 	energy_bar.value = 0.0
 	energy_bar.visible = false

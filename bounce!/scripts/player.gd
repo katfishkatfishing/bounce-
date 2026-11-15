@@ -3,6 +3,7 @@ extends CharacterBody2D
 @onready var animated_sprite_2d: AnimatedSprite2D = $AnimatedSprite2D
 @onready var ForBars = $UI
 
+
 #region
 const max_buildup: float = 300.0
 const gpe_buildup_rate: float = 400.0
@@ -24,13 +25,16 @@ var peak_fall_speed: float = 0.0
 var was_on_floor_last_frame: bool = true
 var hp: int = 100
 var SPEED = 100.0
-var JUMP_VELOCITY = -400.
+var JUMP_VELOCITY = -350.0
 var in_water: bool = false
 var in_void: bool = false
 #endregion
 
 func _ready() -> void:
 	ForBars.update_health(hp)
+	var spawn = get_tree().get_first_node_in_group("SpawnPoint")
+	if spawn:
+		global_position = spawn.global_position
 
 func _process(delta: float) -> void:
 	if hp <= 0:
@@ -139,7 +143,10 @@ func take_fall_damage(speed: float) -> void:
 	ForBars.update_health(hp)
 
 func die_respawn() -> void:
-	self.global_position = SpawnPoint.global_position
+	var spawn = get_tree().get_first_node_in_group("SpawnPoint")
+	if spawn:
+		global_position = SpawnPoint.global_position
+
 	hp = max_hp
 	ForBars.update_health(hp)
 	gpe_buildup = 0.0

@@ -7,6 +7,7 @@
 script = ExtResource("1_oet8a")
 
 [node name="UIContainer" type="Control" parent="." unique_id=2061032481]
+z_index = 4096
 custom_minimum_size = Vector2(1152, 648)
 layout_mode = 3
 anchors_preset = 0
@@ -61,3 +62,4 @@ theme_override_font_sizes/font_size = 24
 text = "Continue Game"
 
 [connection signal="pressed" from="UIContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="UIContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]

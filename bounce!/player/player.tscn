@@ -132,6 +132,7 @@ animations = [{
 }]
 
 [node name="Player" type="CharacterBody2D" unique_id=1989927636 groups=["Player"]]
+z_index = 10
 script = ExtResource("1_rkbax")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=66918889]

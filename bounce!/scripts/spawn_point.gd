@@ -4,10 +4,14 @@ extends Area2D
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	visible = false
+	if get_tree().current_scene.name == "MainMenu":
+		return
+		
 	await get_tree().process_frame
 	
 	var existing_player = get_tree().get_first_node_in_group("Player")
 	if existing_player:
+		existing_player.global_position = global_position
 		return
 		
 	spawn_player()
