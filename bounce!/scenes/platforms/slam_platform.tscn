@@ -1,0 +1,137 @@
+[gd_scene format=3 uid="uid://cdnmju2kdqvn"]
+
+[ext_resource type="Texture2D" uid="uid://br1vuc6csq0yf" path="res://assets/tilemap/Dungeon Tile Set.png" id="1_1garx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4v7s"]
+size = Vector2(47, 2)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yf5fn"]
+size = Vector2(48, 145)
+
+[sub_resource type="Animation" id="Animation_1garx"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-0.5, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -75.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_epxpk"]
+resource_name = "slam_platform"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, -755)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("CollisionShape2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.5, 0), Vector2(0, -755)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Area2D/CollisionShape2D:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -75.5), Vector2(0, -75.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Area2D:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0.5, -755)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dnce1"]
+_data = {
+&"RESET": SubResource("Animation_1garx"),
+&"slam_platform": SubResource("Animation_epxpk")
+}
+
+[node name="slam_platform" type="AnimatableBody2D" unique_id=1934865903]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1287666060]
+texture = ExtResource("1_1garx")
+region_enabled = true
+region_rect = Rect2(16, 143, 49, 8)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=278969449]
+position = Vector2(-0.5, 0)
+shape = SubResource("RectangleShape2D_g4v7s")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=279310434]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2047745077]
+position = Vector2(0, -75.5)
+shape = SubResource("RectangleShape2D_yf5fn")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=648950024]
+libraries/ = SubResource("AnimationLibrary_dnce1")
