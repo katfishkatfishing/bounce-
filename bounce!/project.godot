@@ -11,13 +11,14 @@ config_version=5
 [application]
 
 config/name="bounce!"
-run/main_scene="uid://btj102gv0wros"
+run/main_scene="uid://d2airolkyw3la"
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
 
 SpawnPoint="*uid://dmrmvhoswdspd"
+SaveManager="*uid://dqfuf010wsf2w"
 
 [display]
 
