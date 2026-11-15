@@ -9,5 +9,6 @@ func _ready() -> void:
 
 func _on_body_entered(body: CharacterBody2D) -> void:
 	if body.is_in_group("Player"):
+		body.in_void = true
+		print("void consumes")
 		body.die_respawn()
-		

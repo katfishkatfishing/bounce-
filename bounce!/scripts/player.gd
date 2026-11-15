@@ -26,6 +26,7 @@ var hp: int = 100
 var SPEED = 100.0
 var JUMP_VELOCITY = -400.
 var in_water: bool = false
+var in_void: bool = false
 #endregion
 
 func _ready() -> void:
@@ -131,7 +132,7 @@ func update_animation(direction: float) -> void:
 		animated_sprite_2d.play("fall")
 
 func take_fall_damage(speed: float) -> void:
-	if in_water == true:
+	if in_water or in_void == true:
 		return
 
 	var damage = (speed - fall_velocity_limit) * 0.1
@@ -142,6 +143,7 @@ func die_respawn() -> void:
 	self.global_position = SpawnPoint.global_position
 	hp = max_hp
 	ForBars.update_health(hp)
+	gpe_buildup = 0.0
 
 func reset_bounce_energy() -> void:
 	gpe_buildup = 0.0

@@ -19,7 +19,6 @@ region_enabled = true
 region_rect = Rect2(25, 81, 6, 6)
 
 [node name="water_enter" type="Area2D" parent="." unique_id=1729750500]
-unique_name_in_owner = true
 script = ExtResource("2_il1fj")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="water_enter" unique_id=1833277557]
