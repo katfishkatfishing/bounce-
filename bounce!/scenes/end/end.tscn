@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cw55ryh2tawrx"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_yf5fn"]
+
+[node name="End" type="Node2D" unique_id=1501138783]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=545789004]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=400201769]
+position = Vector2(1, 171)
+shape = SubResource("WorldBoundaryShape2D_yf5fn")
+
+[node name="TextEdit" type="TextEdit" parent="." unique_id=67777308]
+offset_left = 2.0
+offset_top = 106.0
+offset_right = 108.0
+offset_bottom = 142.0
+text = "The End :D"
