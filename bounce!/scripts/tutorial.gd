@@ -15,13 +15,13 @@ func _process(_delta: float) -> void:
 
 
 
-func _on_retry_tutorial_body_entered(body: CharacterBody2D) -> void:
+func _on_retry_tutorial_body_entered(body: Node2D) -> void:
 	print("in")
 	if body.name == "Player":
 		body.global_position = Vector2(450, -50)
 
 
 
-func _on_tp_parkour_body_entered(body: CharacterBody2D) -> void:
+func _on_tp_parkour_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		get_tree().change_scene_to_file("res://scenes/parkour/parkour.tscn")

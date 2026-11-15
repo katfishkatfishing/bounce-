@@ -12,6 +12,6 @@ func _process(delta: float) -> void:
 
 
 
-func _on_tp_tutorial_body_entered(body: CharacterBody2D) -> void:
+func _on_tp_tutorial_body_entered(body: Node2D) -> void:
 	if body.name == "Player":
 		get_tree().change_scene_to_file("res://scenes/00_pit/tutorial.tscn")
