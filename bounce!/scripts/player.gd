@@ -6,7 +6,7 @@ extends CharacterBody2D
 #region
 const max_buildup: float = 300.0
 const gpe_buildup_rate: float = 400.0
-const fall_velocity_limit: float = 300.0 # limit before damage 
+const fall_velocity_limit: float = 500.0 # limit before damage 
 const max_hp: int = 100
 const double_jump: bool = false
 const slow_fall: bool = false
@@ -134,7 +134,6 @@ func update_animation(direction: float) -> void:
 func take_fall_damage(speed: float) -> void:
 	if in_water or in_void == true:
 		return
-
 	var damage = (speed - fall_velocity_limit) * 0.1
 	hp -= int(damage)
 	ForBars.update_health(hp)
