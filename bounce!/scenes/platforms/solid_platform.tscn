@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bqoewswpy0xih"]
+
+[ext_resource type="Texture2D" uid="uid://br1vuc6csq0yf" path="res://assets/tilemap/Dungeon Tile Set.png" id="1_a5ccb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l8qp0"]
+size = Vector2(48, 2)
+
+[node name="solid_platform" type="AnimatableBody2D" unique_id=585963667]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=168386256]
+texture = ExtResource("1_a5ccb")
+region_enabled = true
+region_rect = Rect2(16, 144, 48, 6)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=236657178]
+shape = SubResource("RectangleShape2D_l8qp0")
