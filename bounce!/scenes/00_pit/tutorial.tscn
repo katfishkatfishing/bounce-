@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://dou3uyrpifuhj" path="res://scenes/platforms/moving_platform_wood.tscn" id="2_n416f"]
 [ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="3_e35f4"]
 [ext_resource type="PackedScene" uid="uid://nphkuekqe5s0" path="res://scenes/platforms/water.tscn" id="5_amvl5"]
+[ext_resource type="PackedScene" uid="uid://dmrmvhoswdspd" path="res://scenes/platforms/spawn_point.tscn" id="6_uxdra"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_m2r7u"]
 texture = ExtResource("1_usprk")
@@ -589,6 +590,9 @@ virtual_keyboard_enabled = false
 z_index = -1
 position = Vector2(56.000004, 16)
 scale = Vector2(6.9799166, 1.959225)
+
+[node name="SpawnPoint" parent="." unique_id=48932849 instance=ExtResource("6_uxdra")]
+position = Vector2(66, -415)
 
 [connection signal="body_entered" from="retry_tutorial" to="." method="_on_retry_tutorial_body_entered"]
 [connection signal="body_entered" from="tp_parkour" to="." method="_on_tp_parkour_body_entered"]
