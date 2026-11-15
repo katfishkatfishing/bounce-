@@ -1,7 +1,6 @@
 [gd_scene format=4 uid="uid://bisr3vq5ooeoj"]
 
 [ext_resource type="Texture2D" uid="uid://xkffjubrfc4r" path="res://assets/tilemap/crystal cave tiles.png" id="1_jbll3"]
-[ext_resource type="PackedScene" uid="uid://cjnbi7ekfkvnr" path="res://player/player.tscn" id="2_bfiwq"]
 [ext_resource type="PackedScene" uid="uid://dwrfkkx08tpfa" path="res://scenes/platforms/trapped_bridge.tscn" id="3_vswcf"]
 [ext_resource type="PackedScene" uid="uid://cqkgpl7hdem3p" path="res://scenes/platforms/t_platform.tscn" id="4_16dot"]
 [ext_resource type="PackedScene" uid="uid://bqoewswpy0xih" path="res://scenes/platforms/solid_platform.tscn" id="5_16dot"]
@@ -2433,9 +2432,6 @@ tile_set = SubResource("TileSet_yf5fn")
 position = Vector2(-250, 0)
 rotation = 1.5707964
 shape = SubResource("WorldBoundaryShape2D_g4v7s")
-
-[node name="Player" parent="." unique_id=1989927636 instance=ExtResource("2_bfiwq")]
-position = Vector2(-238, -11)
 
 [node name="t-platform" parent="." unique_id=396680342 instance=ExtResource("4_16dot")]
 position = Vector2(940, -9)

@@ -53,7 +53,7 @@ size_flags_vertical = 8
 theme_override_font_sizes/font_size = 24
 text = "New Game"
 
-[node name="ContinueGameButton" type="Button" parent="UIContainer/VBoxContainer" unique_id=519864663]
+[node name="LoadGameButton" type="Button" parent="UIContainer/VBoxContainer" unique_id=519864663]
 custom_minimum_size = Vector2(500, 50)
 layout_mode = 2
 size_flags_horizontal = 4
@@ -62,4 +62,5 @@ theme_override_font_sizes/font_size = 24
 text = "Continue Game"
 
 [connection signal="pressed" from="UIContainer/VBoxContainer/NewGameButton" to="." method="_on_new_game_button_pressed"]
-[connection signal="pressed" from="UIContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
+[connection signal="pressed" from="UIContainer/VBoxContainer/LoadGameButton" to="." method="_on_load_game_button_pressed"]
+[connection signal="pressed" from="UIContainer/VBoxContainer/LoadGameButton" to="." method="_on_continue_game_button_pressed"]

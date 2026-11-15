@@ -31,6 +31,10 @@ var in_void: bool = false
 #endregion
 
 func _ready() -> void:
+	var scene_name = get_tree().current_scene.name
+	print(scene_name)
+	if scene_name == "TitleScreen":
+		ForBars.visible = false
 	ForBars.update_health(hp)
 	var spawn = get_tree().get_first_node_in_group("SpawnPoint")
 	if spawn:
@@ -38,7 +42,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if hp <= 0:
-		die_respawn()
+		GameManager.die_respawn()
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -141,15 +145,6 @@ func take_fall_damage(speed: float) -> void:
 	var damage = (speed - fall_velocity_limit) * 0.1
 	hp -= int(damage)
 	ForBars.update_health(hp)
-
-func die_respawn() -> void:
-	var spawn = get_tree().get_first_node_in_group("SpawnPoint")
-	if spawn:
-		global_position = SpawnPoint.global_position
-
-	hp = max_hp
-	ForBars.update_health(hp)
-	gpe_buildup = 0.0
 
 func reset_bounce_energy() -> void:
 	gpe_buildup = 0.0

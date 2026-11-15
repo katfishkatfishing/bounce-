@@ -1,6 +1,6 @@
 extends CanvasLayer
 
-@onready var continue_game_button: Button = $UIContainer/VBoxContainer/ContinueGameButton
+@onready var load_game_button: Button = $UIContainer/VBoxContainer/LoadGameButton
 
 
 # Called when the node enters the scene tree for the first time.
@@ -11,7 +11,7 @@ func _ready() -> void:
 		show()
 		
 	if SaveManager.last_scene_path == "" or not ResourceLoader.exists(SaveManager.last_scene_path):
-		continue_game_button.disabled = true
+		load_game_button.disabled = true
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -20,8 +20,8 @@ func _process(delta: float) -> void:
 
 func _on_new_game_button_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/surface/surface.tscn")
-	
+	GameManager.die_respawn()
 
-func _on_continue_game_button_pressed() -> void:
+func _on_load_game_button_pressed() -> void:
 	if SaveManager.last_scene_path != "":
 		get_tree().change_scene_to_file(SaveManager.last_scene_path)

@@ -1,0 +1,67 @@
+[gd_scene format=3 uid="uid://cbr6vidw1ooh5"]
+
+[ext_resource type="Script" uid="uid://bbr5034c0ll2v" path="res://general/escape_menu.gd" id="1_60bf5"]
+[ext_resource type="Texture2D" uid="uid://lfcq6gha60dp" path="res://assets/title.png" id="2_bc3xk"]
+
+[node name="EscapeMenu" type="CanvasLayer" unique_id=631858547]
+process_mode = 3
+script = ExtResource("1_60bf5")
+
+[node name="EscapeContainer" type="Control" parent="." unique_id=2061032481]
+z_index = 4096
+custom_minimum_size = Vector2(1152, 648)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="EscapeContainer" unique_id=1741992282]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+color = Color(0.20784314, 0.20784314, 0.20784314, 0.36078432)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="EscapeContainer" unique_id=947933290]
+custom_minimum_size = Vector2(600, 250)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -108.0
+grow_horizontal = 2
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="EscapeContainer/VBoxContainer" unique_id=1266153133]
+position = Vector2(9.707954, -10.27107)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="EscapeContainer/VBoxContainer/Sprite2D" unique_id=183916570]
+
+[node name="LogoContainer" type="Control" parent="EscapeContainer/VBoxContainer" unique_id=699245201]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+
+[node name="Logo" type="Sprite2D" parent="EscapeContainer/VBoxContainer/LogoContainer" unique_id=1847806287]
+position = Vector2(0, -70)
+texture = ExtResource("2_bc3xk")
+
+[node name="QuitGameButton" type="Button" parent="EscapeContainer/VBoxContainer" unique_id=820431060]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+theme_override_font_sizes/font_size = 24
+text = "Quit Game"
+
+[node name="ContinueGameButton" type="Button" parent="EscapeContainer/VBoxContainer" unique_id=519864663]
+custom_minimum_size = Vector2(500, 50)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_font_sizes/font_size = 24
+text = "Continue Game"
+
+[connection signal="pressed" from="EscapeContainer/VBoxContainer/QuitGameButton" to="." method="_on_new_game_button_pressed"]
+[connection signal="pressed" from="EscapeContainer/VBoxContainer/QuitGameButton" to="." method="_on_quit_game_button_pressed"]
+[connection signal="pressed" from="EscapeContainer/VBoxContainer/ContinueGameButton" to="." method="_on_continue_game_button_pressed"]
