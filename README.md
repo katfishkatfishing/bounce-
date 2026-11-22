@@ -7,7 +7,8 @@ you play as a little slime that has the ability to store gpe (gravitational pote
 
 ## Gameplay
 Basically a super short parkour platformer. Bounce back up to the surface! 
-To *Bounce*: While **in the air**, **Press and Hold** a **Jump** key, and let go right as you hit the ground. *(p.s. **NOT** pressing and holding from the ground!)*
+To *Bounce*: While **in the air**, **Press and Hold** a **Jump** key, and let go right as you hit the ground. *(p.s. **NOT** pressing and holding from the ground!)* \
+You take damage if you fall from a great height so beware!
 
 ## Controls
 |Key|Action|
